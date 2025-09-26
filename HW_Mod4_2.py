@@ -30,7 +30,7 @@ def get_cats_info(f_path: str) -> list[dict]:
                 except ValueError:
                     print(f"Неправильний формат рядка: {line}")
     except FileNotFoundError:
-        print(f"Файл {path} не знайдено.")
+        print(f"Файл {f_path} не знайдено.")
     except IOError as e:
         print(f"Помилка при читанні файлу: {e}")
 

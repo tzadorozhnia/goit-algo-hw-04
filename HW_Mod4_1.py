@@ -26,11 +26,16 @@ def total_salary(f_path: str) -> tuple[float, float]:
             s_line = line.split(',')
             if len(s_line) == 2:
                 try:
-                    total_local = total_local + int(s_line[1])
+                    total_local = total_local + float(s_line[1])
                 except ValueError:
                     total_local = total_local
-        average_local = int(total_local / quantity)
-        return total_local, average_local
+        try:
+            average_local = float(total_local / quantity)
+        except ZeroDivisionError:
+            print("Помилка: ділення на нуль!")
+            return 0, 0
+        else:
+            return total_local, average_local
     except FileNotFoundError:
         print(f"Помилка: файл '{f_path}' не знайдено.")
         return 0, 0
